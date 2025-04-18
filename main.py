@@ -1,19 +1,5 @@
 from pet import Pet
 
-my_pet = Pet("Buddy")
-
-my_pet.get_status()
-my_pet.eat()
-my_pet.sleep()
-my_pet.play()
-my_pet.train("Roll over")
-my_pet.train("Sit")
-
-my_pet.get_status()
-my_pet.show_tricks()
-
-from pet import Pet
-
 def main():
     pet = Pet("Buddy")
 
@@ -27,6 +13,7 @@ def main():
         print("6. Check Status")
         print("7. Take a Walk")
         print("8. Exit")
+        print("9. Perform a Trick")  # new option
 
         choice = input("Enter your choice: ")
 
@@ -42,10 +29,8 @@ def main():
         elif choice == "4":
             trick = input("What trick should your pet learn? ")
             pet.train(trick)
-            print(f"Learned {trick}!")
         elif choice == "5":
-            tricks = pet.show_tricks()
-            print("Tricks:", ", ".join(tricks) if tricks else "No tricks yet.")
+            pet.show_tricks()
         elif choice == "6":
             status = pet.get_status()
             print(f"Name: {status['name']}, Hunger: {status['hunger']}, Energy: {status['energy']}, Happiness: {status['happiness']}")
@@ -54,9 +39,11 @@ def main():
         elif choice == "8":
             print("Goodbye!")
             break
+        elif choice == "9":
+            trick = input("Which trick should your pet perform? ")
+            pet.perform_trick(trick)
         else:
             print("Invalid option, try again.")
 
 if __name__ == "__main__":
     main()
-
